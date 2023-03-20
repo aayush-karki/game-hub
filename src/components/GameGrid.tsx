@@ -1,4 +1,4 @@
-import { SimpleGrid, Skeleton, Text } from "@chakra-ui/react";
+import { SimpleGrid, Text } from "@chakra-ui/react";
 import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardContainer from "./GameCardContainer";
@@ -12,7 +12,7 @@ const GameGrid = () => {
 			{error && <Text>{error}</Text>}
 			<SimpleGrid
 				columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
-				spacing="10"
+				spacing="13"
 				padding="10px"
 			>
 				{isLoading &&
