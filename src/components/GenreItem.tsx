@@ -1,7 +1,6 @@
 import { Button, HStack, Image } from "@chakra-ui/react";
 import { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/Image-url";
-import GenreImageContainer from "./GenreImageContainer";
 
 interface GenreItemProps {
 	backgroundImageUrl: string;
@@ -19,16 +18,21 @@ export const GenreItem = ({
 	return (
 		<>
 			<HStack>
-				<GenreImageContainer>
-					<Image src={getCroppedImageUrl(backgroundImageUrl)} />
-				</GenreImageContainer>
+				<Image
+					boxSize="32px"
+					borderRadius={8}
+					objectFit="cover"
+					src={getCroppedImageUrl(backgroundImageUrl)}
+				/>
 				<Button
+					fontSize="lg"
 					onClick={() => onSelectGenre()}
 					fontWeight={
 						selectedGenreName === genreName ? "bold" : "normal"
 					}
-					fontSize="lg"
+					textAlign="left"
 					variant="link"
+					whiteSpace="normal"
 				>
 					{genreName}
 				</Button>
