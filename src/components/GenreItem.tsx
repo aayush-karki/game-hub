@@ -1,20 +1,27 @@
-import { HStack, Image, Text } from "@chakra-ui/react";
+import { Button, HStack, Image, Text } from "@chakra-ui/react";
+import { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/Image-url";
 import GenreImageContainer from "./GenreImageContainer";
 
 interface GenreItemProps {
-	backgroundImageUrl: string;
-	name: string;
+	genre: Genre;
+	onSelectGenre: (genre: Genre) => void;
 }
 
-export const GenreItem = ({ backgroundImageUrl, name }: GenreItemProps) => {
+export const GenreItem = ({ genre, onSelectGenre }: GenreItemProps) => {
 	return (
 		<>
 			<HStack>
 				<GenreImageContainer>
-					<Image src={getCroppedImageUrl(backgroundImageUrl)} />
+					<Image src={getCroppedImageUrl(genre.image_background)} />
 				</GenreImageContainer>
-				<Text fontSize="lg">{name}</Text>
+				<Button
+					onClick={() => onSelectGenre(genre)}
+					fontSize="lg"
+					variant="link"
+				>
+					{genre.name}
+				</Button>
 			</HStack>
 		</>
 	);
