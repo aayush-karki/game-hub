@@ -7,9 +7,10 @@ import GerneItemSkeleton from "./GerneItemSkeleton";
 
 interface GenreListProps {
 	onSelectGenre: (genre: Genre) => void;
+	selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: GenreListProps) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
 	const { data, isLoading, error } = useGenres();
 	const skeletons = Array.from(Array(20).keys());
 
@@ -32,6 +33,11 @@ const GenreList = ({ onSelectGenre }: GenreListProps) => {
 							onSelectGenre={() => {
 								onSelectGenre(genre);
 							}}
+							selectedGenreName={
+								selectedGenre === null
+									? ""
+									: selectedGenre?.name
+							}
 						/>
 					</GenreListItemContainer>
 				))}
