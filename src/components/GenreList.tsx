@@ -33,11 +33,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
 							onSelectGenre={() => {
 								onSelectGenre(genre);
 							}}
-							selectedGenreName={
-								selectedGenre === null
-									? ""
-									: selectedGenre?.name
-							}
+							selectedGenreName={selectedGenre?.name || ""}
 						/>
 					</GenreListItemContainer>
 				))}
